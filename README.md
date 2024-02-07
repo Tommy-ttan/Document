@@ -6,15 +6,17 @@ In current version, OSD popup only used by Android Auto and Apple Carplay
 
 This is OSD popup for NADA
 
-![showcase](link to text in one line only layout)
+* the OSD popup with text and icon in one line
+![alt text](type_1.png)
 
-![showcase](link to text in two lines only layout)
+* the OSD popup with text and icon in two lines
+![showcase](type_2.png)
 
-![showcase](link to text and icon in one line layout)
+* the OSD popup with text only in one line
+![showcase](type_3.png)
 
-![showcase](link to text and icon in two line layout)
-
-![showcase](link to customize layout)
+* the OSD popup with text only in two lines
+![showcase](type_4.png)
 
 ## Feature
 
@@ -35,7 +37,7 @@ This popup is wraped Notification of Android framework. How to use: simillar to 
 
 ### Import some neccessary packages
 
-```
+```java
     import android.app.NotificationChannel;
     import android.app.NotificationManager;
 ```
@@ -43,7 +45,7 @@ This popup is wraped Notification of Android framework. How to use: simillar to 
 ### Create channel
 
 * Define some attribute of a channel
-```
+```java
     String  CHANNEL_ID              =       {channel_id}
     String  CHANNEL_NAME            =       {channel_name}
     int     CHANNEL_IMPORTANT       =       {channel_important}
@@ -51,7 +53,7 @@ This popup is wraped Notification of Android framework. How to use: simillar to 
 ```
 
 * Create and active channel
-```
+```java
     NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, CHANNEL_IMPORTANT);
     channel.setDescription(CHANNEL_DESCRIPTION);
 
@@ -62,37 +64,37 @@ This popup is wraped Notification of Android framework. How to use: simillar to 
 ### Make a notification
 
 * retrieve notification service by Android system
-```
+```java
     NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 ```
 
 * create notification buider
-```
+```java
     NotificationCompat.Builder builder = new NotificationCompat.Builder(Context context, String channel_id);
 ```
 
 * add atrribute to title and icon
     * if title attribute was set to non, both icon and title was not displayed
-```
+```java
     builder.setContentTitle(String title);              
     builder.setSmallIcon(int icon);             
 ```
 
 * add atrribute to text
     * if the text was too long, it will display on two lines and resize the text a bit (from 40px to 35px)
-```
+```java
     builder.setContentText(String text);
 ```
 
 * notify the notification
-```
+```java
     notificationManager.notify(int id, builder.build());
 ```
 
 ### Notification with remote view
 
 * In case want to customize UI of OSD, should be include this view into the remote view and build with noti 
-```
+```java
     import android.app.NotificationManager;
     import android.widget.RemoteViews;
 
